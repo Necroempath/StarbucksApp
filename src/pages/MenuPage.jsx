@@ -10,6 +10,7 @@ const MenuPage = () => {
   return <div className="container mx-auto flex
       px-16 md:px-18 lg:px-20 xl:px-22 py-10">
     <ListMenu />
+
     <MainMenu />
   </div>;
 };
