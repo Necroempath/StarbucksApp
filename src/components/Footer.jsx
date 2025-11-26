@@ -1,4 +1,8 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux"
+
 const Footer = () => {
+
   return (
     <div>Footer</div>
   )

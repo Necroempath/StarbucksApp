@@ -1,17 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Header from './components/Header'
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "./state/products/productsSlice";
+import { useEffect } from "react";
+import { populateCategories
 
+ } from "./state/products/productsSlice";
 function App() {
-  const [count, setCount] = useState(0)
+  const { items, categories, status, error } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
-  return (
-    <>
-    <Header />
-    </>
-  )
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+
+    if(status === 'failed'){
+      console.log(error);
+    }
+  }, [status, dispatch, categories]);
+
+  return null;
 }
 
-export default App
+export default App;

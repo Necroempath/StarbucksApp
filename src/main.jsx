@@ -8,6 +8,7 @@ import ProductPage from "./pages/ProductPage.jsx";
 import SiteLauout from "./pages/SiteLauout.jsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
+import App from "./App.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
+    <App />
     <RouterProvider router={router} />
   </Provider>
 );
