@@ -6,7 +6,7 @@ const SiteLauout = () => {
   return (
     <>
       <Header className={'px-6 md:px-8 lg:px-10'}/>
-      <main className="container mx-auto px-4">
+      <main>
         <Outlet />
       </main>
       <Footer />

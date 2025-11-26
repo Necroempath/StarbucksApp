@@ -32,13 +32,14 @@ const productSlice = createSlice({
       .addCase(fetchProducts.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.status = "succeeded";
+      .addCase(fetchProducts.fulfilled, (state, action) => {        
         state.items = action.payload;
         
         const set = new Set();
         state.items.forEach((item) => set.add(item.subcategory));
         state.categories = Array.from(set);
+
+        state.status = "succeeded";
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";
