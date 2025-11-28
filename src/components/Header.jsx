@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaShoppingBasket } from "react-icons/fa";
+import { CiShoppingCart } from "react-icons/ci";
 
 const Header = () => {
   return (
@@ -35,7 +35,7 @@ const Header = () => {
           </NavLink>
         </div>
       </nav>
-      <FaShoppingBasket className="text-4xl text-green-700 hover:text-green-900 cursor-pointer" />
+      <CiShoppingCart className="text-5xl text-zinc-500 hover:text-zinc-900 cursor-pointer" />
     </header>
   );
 };

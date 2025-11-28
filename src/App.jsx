@@ -1,11 +1,39 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, Provider } from "react-redux";
 import { fetchProducts } from "./state/products/productsSlice";
 import { useEffect } from "react";
-import { populateCategories
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import SiteLauout from "./pages/SiteLauout";
+import HomePage from "./pages/HomePage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
+import MenuPage from "./pages/MenuPage.jsx";
+import ProductPage from "./pages/ProductPage.jsx";
 
- } from "./state/products/productsSlice";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <SiteLauout />,
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "/menu",
+        element: <MenuPage />,
+      },
+      {
+        path: "/product/:productId",
+        element: <ProductPage />,
+      },
+    ],
+  },
+]);
+
 function App() {
-  const { items, categories, status, error } = useSelector((state) => state.products);
+  const { items, categories, status, error } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,12 +41,21 @@ function App() {
       dispatch(fetchProducts());
     }
 
-    if(status === 'failed'){
+    if (status === "failed") {
       console.log(error);
     }
   }, [status, dispatch, categories]);
 
-  return null;
+  if (status === "succeeded") {
+    return (
+      <RouterProvider router={router}>
+        <SiteLauout />
+      </RouterProvider>
+    );
+  }
+  else if(status === 'pending') {
+    return 
+  }
 }
 
 export default App;
