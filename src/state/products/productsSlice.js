@@ -36,9 +36,10 @@ const productSlice = createSlice({
         state.items = action.payload;
         
         const set = new Set();
-        state.items.forEach((item) => set.add(item.subcategory));
+        state.items.forEach(item => set.add(item.subcategory));
         state.categories = Array.from(set);
 
+        state.items.forEach(item => item.sizes.forEach(size => size.price = parseInt(size.capacity) * (parseInt(size.calories) + 100) / 100))
         state.status = "succeeded";
       })
       .addCase(fetchProducts.rejected, (state, action) => {

@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import MenuPage from "./pages/MenuPage.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
+import BasketPage from "./pages/BasketPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/menu",
         element: <MenuPage />,
+      },
+      {
+        path: "/basket",
+        element: <BasketPage />,
       },
       {
         path: "/product/:productId",
@@ -47,14 +52,14 @@ function App() {
   }, [status, dispatch, categories]);
 
   if (status === "succeeded") {
+    console.log(items);
     return (
       <RouterProvider router={router}>
         <SiteLauout />
       </RouterProvider>
     );
-  }
-  else if(status === 'pending') {
-    return 
+  } else if (status === "pending") {
+    return;
   }
 }
 

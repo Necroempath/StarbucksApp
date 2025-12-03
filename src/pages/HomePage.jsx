@@ -14,7 +14,7 @@ const HomePage = () => {
           alt="Starbucks Hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="relative z-10 bg-black opacity-50 flex flex-col justify-center items-start px-8 lg:px-20 h-full">
+        <div className="relative z-10 bg-black/50 flex flex-col justify-center items-start px-8 lg:px-20 h-full">
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">
             Welcome to Starbucks
           </h1>
@@ -57,7 +57,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Promo Section */}
       <section className="relative w-full h-[60vh] bg-gray-100">
         <div className="absolute inset-0 bg-green-600 bg-opacity-90 flex flex-col justify-center items-center text-center px-6 lg:px-20">
           <h2 className="text-4xl font-bold text-white mb-4">

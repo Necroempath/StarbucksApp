@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CiShoppingCart } from "react-icons/ci";
 
 const Header = () => {
@@ -35,7 +35,9 @@ const Header = () => {
           </NavLink>
         </div>
       </nav>
-      <CiShoppingCart className="text-5xl text-zinc-500 hover:text-zinc-900 cursor-pointer" />
+      <Link to='/basket'>
+        <CiShoppingCart className="text-5xl text-zinc-500 hover:text-zinc-900 cursor-pointer" />
+      </Link>
     </header>
   );
 };
