@@ -9,31 +9,36 @@ import MenuPage from "./pages/MenuPage.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
 import BasketPage from "./pages/BasketPage.jsx";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <SiteLauout />,
+      errorElement: <NotFoundPage />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "/menu",
+          element: <MenuPage />,
+        },
+        {
+          path: "/basket",
+          element: <BasketPage />,
+        },
+        {
+          path: "/product/:productId",
+          element: <ProductPage />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <SiteLauout />,
-    errorElement: <NotFoundPage />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "/menu",
-        element: <MenuPage />,
-      },
-      {
-        path: "/basket",
-        element: <BasketPage />,
-      },
-      {
-        path: "/product/:productId",
-        element: <ProductPage />,
-      },
-    ],
-  },
-]);
+    basename: "/StarbucksApp/",
+  }
+);
 
 function App() {
   const { items, categories, status, error } = useSelector(
